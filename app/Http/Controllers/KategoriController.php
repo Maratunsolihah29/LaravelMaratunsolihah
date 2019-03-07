@@ -47,6 +47,14 @@ class KategoriController extends Controller
         ->validate();
         
 
-        return'Fungsi Update';
+        $result = Kategori::where('id',$req->id)
+                    ->update([
+                        'nama_kategori'=>$req->kategori,
+                    ]);
+        if( $result ){
+            return redirect()->route('admin.kategori')->with('result','update');
+        } else {
+            return back()->with('result','fail');
+        }
     }
 }
