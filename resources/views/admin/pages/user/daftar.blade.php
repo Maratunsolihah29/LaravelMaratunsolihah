@@ -32,8 +32,8 @@
 @endif
 
 @if(session('result') == 'fail-delete')
-<div class="alert alert-danger  alert-dismissible fade show">
-	<strong>Failde!</strong> Gagal dihapus.
+<div class="alert alert-success  alert-dismissible fade show">
+	<strong>Failed!</strong> Gagal dihapus.
 	<button type="button" class="close" data-dismiss="alert">
 		&times;
 	</button>
