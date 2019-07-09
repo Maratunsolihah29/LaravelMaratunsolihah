@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth']], function(){
 	Route::prefix('user')->group(function(){
 		
 			Route::get('/','UserController@daftar')->name('admin.user')->middleware('akses.admin'); 
-			Route::delete('/','UserController@delete');
+			Route::delete('/','UserController@delete')->middleware('akses.admin');
 
 			Route::get('/add','UserController@add')->name('admin.user.add')->middleware('akses.admin');
 			Route::post('/add','UserController@save')->middleware('akses.admin');
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth']], function(){
 
 	Route::group(['prefix'=>'kategori','middleware'=>'akses.admin'], function(){
 			Route::get('/','KategoriController@daftar')->name('admin.kategori'); 
-			Route::delete('/','KategoriController@delete')->middleware('akses.admin');
+			Route::delete('/','KategoriController@delete');
 
 			Route::get('/add','KategoriController@add')->name('admin.kategori.add');
 			Route::post('/add','KategoriController@save');
@@ -51,8 +51,11 @@ Route::group(['prefix' => 'admin','middleware'=>['auth']], function(){
 			Route::post('/edit/{id}','KategoriController@update');
 
 
-			Route::get('/','KategoriController@daftar')->name('admin.kategori')->middleware('akses.admin');
-			Route::delete('/','KategoriController@delete')->middleware('akses.admin');
+	});
+
+	/* Produk */
+	Route::group(['prefix'=>'produk','middleware'=>'akses.admin'], function(){
+		Route::get('/','ProdukController@daftar')->name('admin.produk');
 	});
 
 });

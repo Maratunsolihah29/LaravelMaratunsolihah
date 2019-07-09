@@ -6,7 +6,7 @@
 
 @if( session('result') == 'success')
 <div class="alert alert-success alert-dismissible fade show">
-	<strong>Saved !</strong> Berhasil disimpan.
+	<strong>Saved!</strong> Berhasil disimpan.
 	<button type="button" class="close" data-dismiss="alert">
 		&times; 
 	</button>
@@ -15,7 +15,7 @@
 
 @if( session('result') == 'update')
 <div class="alert alert-success alert-dismissible fade show">
-	<strong>Updated !</strong> Berhasil diupdate.
+	<strong>Updated!</strong> Berhasil diupdate.
 	<button type="button" class="close" data-dismiss="alert">
 		&times; 
 	</button>
@@ -32,7 +32,7 @@
 @endif
 
 @if( session('result') == 'fail-delete')
-<div class="alert alert-success alert-dismissible fade show">
+<div class="alert alert-danger alert-dismissible fade show">
 	<strong>Failed!</strong> Gagal dihapus.
 	<button type="button" class="close" data-dismiss="alert">
 		&times; 
@@ -98,23 +98,23 @@
 <div class="modal-header">
 <h5 class="modal-title">Delete</h5>
 <button class="close" type="button" data-dismiss="modal">
-<span>x</span>
+<span aria-hidden="true">x</span>
 </button>		
 </div><!--End Modal Header-->
 <div class="modal-body">
 	Apakah anda ingin menghapusnya ?
 	<form id="form-delete" method="post" action="{{route('admin.kategori')}}">
-		{{ csrf_field() }}
 		{{ method_field('delete')}}
+		{{ csrf_field() }}
 		<input type="hidden" name="id" id="input-id">
 	</form>
 </div><!--End Modal Body-->
 <div class="modal-footer">
 	<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 	<button class="btn btn-primary btn-delete" type="button">Delete</button>
+</div><!--End modal footer-->
 </div>
-</div><!--End Modal content-->
-</div><!--End Modal dialog-->
+</div>
 </div>
 @endpush
 
@@ -126,6 +126,7 @@
 			$('#input-id').val(id);
 			$('#deleteModal').modal('show');
 		});
+
 		$('.btn-delete').click(function(){
 			$('#form-delete').submit();
 		});
