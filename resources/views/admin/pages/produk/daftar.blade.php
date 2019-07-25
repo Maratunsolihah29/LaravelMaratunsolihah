@@ -56,10 +56,10 @@
 			<small class="text-muted">{{$dt->nama_kategori}}</small>
 		</td>
 
-		<!-- Kolom Tambah  -->
+		<!-- Kolom Tombol  -->
 		<td>
 			<!-- Tombol Edit  -->
-			<a href="#" 
+			<a href="{{ route('admin.produk.edit',['id'=>$dt->id])}}" 
 			class="btn btn-success btn-sm">
 			<i class="fa fa-w fa-edit"></i>
 			</a>
